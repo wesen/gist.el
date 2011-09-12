@@ -92,7 +92,7 @@ The credentials are retrieved at most once within the body of this macro."
      (destructuring-bind (,login . ,token) *github-auth-info*
        ,@body)))
 
-(defun* gist-request (url callback &optional params)
+ (defun* gist-request (url callback &optional params)
   "Makes a request to `url' asynchronously, notifying `callback' when
 complete. The github parameters are included in the request. Optionally
 accepts additional POST `params' as a list of (key . value) conses."
@@ -100,7 +100,7 @@ accepts additional POST `params' as a list of (key . value) conses."
     (let ((url-request-data (gist-make-query-string
                              `(("login" . ,login)
                                ("token" . ,token) ,@params)))
-          (url-max-redirecton -1)
+          (url-max-redirection -1)
           (url-request-method "POST"))
       (url-retrieve url callback))))
 
